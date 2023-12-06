@@ -4,8 +4,8 @@ import { useFormik } from "formik";
 const initialValues = {
   name: "",
   email: "",
-  channel: "",
-  passwoed:"",
+  interest: "",
+  password: "",
 };
 const onSubmit = (values) => {
   console.log("Form data", values);
@@ -21,15 +21,15 @@ const validate = (values) => {
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = "Invalid email format";
   }
-  if (!values.channel) {
-    errors.channel = "Required";
+  if (!values.interest) {
+    errors.interest = "Required";
   }
   if (!values.password) {
     errors.password = "Required";
   }
 
   return errors;
-};
+}; 
 
 function Form() {
   const formik = useFormik({
@@ -80,7 +80,7 @@ function Form() {
               ) : null}
             </div>
             <div>
-              <label className="text-3xl flex mb-2 mt-2" htmlFor="email">
+              <label className="text-3xl flex mb-2 mt-2" htmlFor="password">
                 Password:
               </label>
               <input
@@ -98,21 +98,21 @@ function Form() {
               ) : null}
             </div>
             <div>
-              <label className="text-3xl flex mb-2 mt-2" htmlFor="name">
+              <label className="text-3xl flex mb-2 mt-2" htmlFor="interest">
                 Interest:
               </label>
               <input
                 className="border-2 border-black px-10 py-2  text-gray-400"
                 type="text"
-                id="channel"
-                name="channel"
+                id="interest"
+                name="interest"
                 // onChange={formik.handleChange}
                 // onBlur={formik.handleBlur}
                 // value={formik.values.channel}
-                {...formik.getFieldProps("channel")}
+                {...formik.getFieldProps("interest")}
               />
-              {formik.touched.channel && formik.errors.channel ? (
-                <div className="text-red-800">{formik.errors.channel}</div>
+              {formik.touched.interest && formik.errors.interest ? (
+                <div className="text-red-800">{formik.errors.interest}</div>
               ) : null}
             </div>
             <div className="flex justify-center mt-4">
