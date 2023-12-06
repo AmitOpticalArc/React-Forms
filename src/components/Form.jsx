@@ -5,6 +5,7 @@ const initialValues = {
   name: "",
   email: "",
   channel: "",
+  passwoed:"",
 };
 const onSubmit = (values) => {
   console.log("Form data", values);
@@ -23,6 +24,9 @@ const validate = (values) => {
   if (!values.channel) {
     errors.channel = "Required";
   }
+  if (!values.password) {
+    errors.password = "Required";
+  }
 
   return errors;
 };
@@ -37,7 +41,7 @@ function Form() {
   return (
     <>
       <div className="flex justify-center items-center h-screen bg-gray-500">
-        <div className="bg-white px-10 py-24">
+        <div className="bg-white flex justify-center py-2 h-1/2 w-2/12">
           <form onSubmit={formik.handleSubmit}>
             <div className="flex-col">
               <label className="text-3xl flex mb-2 mt-2" htmlFor="name">
@@ -76,8 +80,26 @@ function Form() {
               ) : null}
             </div>
             <div>
+              <label className="text-3xl flex mb-2 mt-2" htmlFor="email">
+                Password:
+              </label>
+              <input
+                className="border-2 border-black px-10 py-2  text-gray-400"
+                type="password"
+                id="password"
+                name="password"
+                // onChange={formik.handleChange}
+                // onBlur={formik.handleBlur}
+                // value={formik.values.email}
+                {...formik.getFieldProps("password")}
+              />
+              {formik.touched.password && formik.errors.password ? (
+                <div className="text-red-800">{formik.errors.password}</div>
+              ) : null}
+            </div>
+            <div>
               <label className="text-3xl flex mb-2 mt-2" htmlFor="name">
-                Intrest:
+                Interest:
               </label>
               <input
                 className="border-2 border-black px-10 py-2  text-gray-400"
@@ -93,7 +115,7 @@ function Form() {
                 <div className="text-red-800">{formik.errors.channel}</div>
               ) : null}
             </div>
-            <div className="flex justify-center mt-10">
+            <div className="flex justify-center mt-4">
               <button
                 className="text-white text-3xl px-6 py-4 bg-blue-800 rounded-3xl"
                 type="submit"
