@@ -1,6 +1,6 @@
 import{ Routes, Route } from "react-router-dom"
 import Hooks from "./components/Hooks";
-import Form from "./components/Form";
+import Formss from "./components/Formss";
 
 function App() {
 
@@ -8,7 +8,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Hooks />} />
-        <Route path="form" element={<Form />} />
+        <Route path="form" element={<Formss />} />
       </Routes>
     </>
   );
