@@ -1,11 +1,13 @@
 import { Formik, Form,Field,ErrorMessage} from "formik";
 import * as Yup from "yup";
+import FromTextError from "./FromTextError";
 
 const initialValues = {
   name: "",
   email: "",
   interest: "",
   password: "",
+  comments: "",
 };
 const onSubmit = (values) => {
   console.log("Form data", values);
@@ -44,9 +46,9 @@ function Formss() {
       <div className="flex justify-center items-center h-screen bg-gray-500">
         <div className="bg-white flex justify-center px-6 py-2 h-2/3 w-2/12">
           <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
           >
             <Form>
               <div className="flex-col">
@@ -54,7 +56,7 @@ function Formss() {
                   Name:
                 </label>
                 <Field
-                  className="border-2 border-black px-10 py-2 text-gray-400"
+                  className="border-2 border-black px-10 py-2 text-gray-400 flex"
                   type="text"
                   id="name"
                   name="name"
@@ -66,14 +68,14 @@ function Formss() {
                 {/* {formik.touched.name && formik.errors.name ? (
                   <div className="text-red-800">{formik.errors.name}</div>
                 ) : null} */}
-                <ErrorMessage name="name" />
+                <ErrorMessage name="name" component={FromTextError}/>
               </div>
               <div>
                 <label className="text-3xl flex mb-2 mt-2" htmlFor="email">
                   Email:
                 </label>
                 <Field
-                  className="border-2 border-black px-10 py-2  text-gray-400"
+                  className="border-2 border-black px-10 py-2  text-gray-400 flex"
                   type="email"
                   id="email"
                   name="email"
@@ -85,14 +87,14 @@ function Formss() {
                 {/* {formik.touched.email && formik.errors.email ? (
                   <div className="text-red-800">{formik.errors.email}</div>
                 ) : null} */}
-                <ErrorMessage name="email"/>
+                <ErrorMessage name="email" component={FromTextError} />
               </div>
               <div>
                 <label className="text-3xl flex mb-2 mt-2" htmlFor="password">
                   Password:
                 </label>
                 <Field
-                  className="border-2 border-black px-10 py-2  text-gray-400"
+                  className="border-2 border-black px-10 py-2  text-gray-400 flex"
                   type="password"
                   id="password"
                   name="password"
@@ -104,14 +106,14 @@ function Formss() {
                 {/* {formik.touched.password && formik.errors.password ? (
                   <div className="text-red-800">{formik.errors.password}</div>
                 ) : null} */}
-                <ErrorMessage name="password" />
+                <ErrorMessage name="password" component={FromTextError}/>
               </div>
               <div>
                 <label className="text-3xl flex mb-2 mt-2" htmlFor="interest">
                   Interest:
                 </label>
                 <Field
-                  className="border-2 border-black px-10 py-2  text-gray-400"
+                  className="border-2 border-black px-10 py-2  text-gray-400 flex"
                   type="text"
                   id="interest"
                   name="interest"
@@ -123,7 +125,7 @@ function Formss() {
                 {/* {formik.touched.interest && formik.errors.interest ? (
                   <div className="text-red-800">{formik.errors.interest}</div>
                 ) : null} */}
-                <ErrorMessage name="interest" />
+                <ErrorMessage name="interest" component={FromTextError} />
               </div>
               <div className="flex justify-center mt-4">
                 <button
@@ -132,6 +134,17 @@ function Formss() {
                 >
                   Submit
                 </button>
+              </div>
+              <div>
+                <label className="text-3xl flex mb-2 mt-2" htmlFor="comments">
+                  Comments
+                </label>
+                <Field
+                  as="textarea"
+                  id="comments"
+                  name="comments"
+                  className="border-2 border-black px-10 py-2  text-gray-400 flex"
+                />
               </div>
             </Form>
           </Formik>
