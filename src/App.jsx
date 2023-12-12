@@ -4,6 +4,7 @@ import Formss from "./components/Formss";
 import FormikContainer from "./components/FormikContainer";
 import LoginForm from "./components/LoginForm";
 import RegistrationForm from "./components/RegistrationForm";
+import MyForm from "./components/MyForm";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="form1" element={<FormikContainer />} />
         <Route path="loginform" element={<LoginForm />} />
         <Route path="regform" element={<RegistrationForm />} />
+        <Route path="myform" element={<MyForm />} />
       </Routes>
     </>
   );

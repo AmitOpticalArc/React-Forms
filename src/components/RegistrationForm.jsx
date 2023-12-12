@@ -6,7 +6,7 @@ import FromikControl from "./FromikControl";
 function RegistrationForm() {
   const options = [
     { key: "Email", value: "emailmoc" },
-    { key: "Telephone", value: "telephonemoc" },
+    { key: "Telephone", value: "telephone" },
   ];
   const initialValues = {
     email: "",
@@ -18,12 +18,15 @@ function RegistrationForm() {
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email format").required("Required"),
     password: Yup.string().required("Required"),
-    confirmpassword: Yup.string()
+    confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), ""], "Passwords must match")
       .required("Required"),
     modeOfContact: Yup.string().required("Required"),
     phone: Yup.string().when("modeOfContact", {
-      is: "telephonemoc",
+      is: (val) => {
+        console.log("modeOfContact value:", val);
+        return val === "telephonemoc";
+      },
       then: Yup.string().required("Required"),
     }),
   });
@@ -59,7 +62,7 @@ function RegistrationForm() {
                 control="input"
                 type="password"
                 label="Confirm Password"
-                name="confirmpassword"
+                name="confirmPassword"
               />
               <FromikControl
                 className="border-2 border-black px-10 py-2 text-black flex"
