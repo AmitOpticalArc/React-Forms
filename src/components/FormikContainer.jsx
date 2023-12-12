@@ -33,17 +33,17 @@ function FormikContainer() {
     description: Yup.string().required("Required"),
     selectOption: Yup.string().required("Required"),
     radioOptions: Yup.string().required("Required"),
-    checkboxOptions: Yup.array().required("Required"),
+    checkboxOptions: Yup.array().min(1, "Required"),
     birthDate: Yup.date().required("Required").nullable(),
   });
-  const onSubmit = (values) =>{
-     console.log("Form data", values);
-      console.log('Saved data',JSON.parse(JSON.stringify(values)));
-    }
+  const onSubmit = (values) => {
+    console.log("Form data", values);
+    console.log("Saved data", JSON.parse(JSON.stringify(values)));
+  };
   return (
     <>
       <div className="flex justify-center items-center h-screen bg-gray-500">
-        <div className="bg-white flex justify-center px-6 py-2 h-screen w-3/4">
+        <div className="bg-yellow-200 flex justify-center items-center px-6 py-2 h-screen w-1/3">
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -52,7 +52,7 @@ function FormikContainer() {
             {(formik) => (
               <Form>
                 <FromikControl
-                  className="border-2 border-black px-10 py-2 text-black flex"
+                  className="border-2 border-black px-2 py-2 text-black flex w-full"
                   control="input"
                   type="email"
                   label="Email"
@@ -62,40 +62,41 @@ function FormikContainer() {
                   control="textarea"
                   label="Description"
                   name="description"
-                  className="border-2 border-black px-10 py-2 text-black flex"
+                  className="border-2 border-black px-2 py-2 text-black flex w-full"
                 />
                 <FromikControl
                   control="select"
                   label="Select a Topic"
                   name="selectOption"
-                  className="border-2 border-black px-10 py-2 text-black flex"
+                  className="border-2 border-black px-2 py-2 text-black flex w-full"
                   options={dropdownOptions}
                 />
                 <FromikControl
                   control="radio"
                   label="Radio Topic"
-                  name="radioOption"
+                  name="radioOptions"
                   options={radioOptions}
                 />
                 <FromikControl
                   control="checkbox"
                   label="Checkbox Topics"
                   name="checkboxOptions"
-                  className="border-2 border-black px-10 py-2 text-black flex"
                   options={checkboxOptions}
                 />
                 <FromikControl
                   control="date"
                   label="Pick a Date"
                   name="birthDates"
-                  className="border-2 border-black px-10 py-2 text-black flex"
+                  className="border-2 border-black px-2 py-2 text-black flex w-full"
                 />
-                <button
-                  className="mt-4 text-2xl px-3 py-2 bg-blue-400 text-white rounded-2xl"
-                  type="submit"
-                >
-                  Submit
-                </button>
+                <div className="flex justify-center p-1">
+                  <button
+                    className="mt-4 text-2xl px-3 py-2 bg-blue-400 text-white rounded-2xl"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
               </Form>
             )}
           </Formik>

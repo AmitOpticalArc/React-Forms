@@ -19,7 +19,7 @@ function CheckboxGroup(props) {
                   value={option.value}
                   checked={field.value.includes(option.value)}
                 />
-                <label className="text-xl font-bold" htmlFor={option.value}>
+                <label className="text-xl text-orange-600 px-4 font-bold" htmlFor={option.value}>
                   {option.key}
                 </label>
               </React.Fragment>

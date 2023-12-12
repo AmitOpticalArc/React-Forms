@@ -51,8 +51,8 @@ const validationSchema = Yup.object({
 function Formss() {
   return (
     <>
-      <div className="flex justify-center items-center h-screen bg-gray-500">
-        <div className="bg-white flex justify-center px-6 py-2 h-screen w-3/4">
+      <div className="flex-col md:flex justify-center items-center h-screen bg-gray-500">
+        <div className="bg-white flex justify-center px-6 py-2 w-full h-screen lg:w-3/12 lg:h-5/6 sm:w-screen">
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -244,7 +244,11 @@ function Formss() {
             }}
           </Formik>
         </div>
-        <img className="w-2/12 h-5/6" src="./img/img.jpg" alt="image" />
+        <img
+          className="w-screen h-screen md lg:w-3/12 lg:h-5/6 sm:w-screen"
+          src="./img/img.jpg"
+          alt="image"
+        />
       </div>
     </>
   );
