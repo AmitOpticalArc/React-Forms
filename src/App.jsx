@@ -1,4 +1,4 @@
-import{ Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom";
 import Hooks from "./components/Hooks";
 import Formss from "./components/Formss";
 import FormikContainer from "./components/FormikContainer";
@@ -7,7 +7,6 @@ import RegistrationForm from "./components/RegistrationForm";
 import MyForm from "./components/MyForm";
 
 function App() {
-
   return (
     <>
       <Routes>
@@ -23,3 +22,23 @@ function App() {
 }
 
 export default App;
+
+
+// import React from "react";
+// import RegistrationForm from "./RegistrationForm";
+// import "./App.css";
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <h1>User Registration</h1>
+//       </header>
+//       <main>
+//         <RegistrationForm />
+//       </main>
+//     </div>
+//   );
+// }
+
+// export default App;
